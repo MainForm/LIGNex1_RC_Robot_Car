@@ -1,0 +1,7 @@
+{
+  "board": "NUCLEO-F103RB",
+  "device": "STM32F103RBT6",
+  "toolchain": "GCC",
+  "core": "Cortex-M3",
+  "order": 0
+}
