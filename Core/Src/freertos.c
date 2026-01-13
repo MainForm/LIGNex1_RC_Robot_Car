@@ -29,6 +29,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -47,12 +48,41 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-/* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
-  .stack_size = 128 * 4,
+/* Definitions for DriveTask */
+osThreadId_t DriveTaskHandle;
+uint32_t DriveTaskBuffer[ 128 ];
+osStaticThreadDef_t DriveTaskControlBlock;
+const osThreadAttr_t DriveTask_attributes = {
+  .name = "DriveTask",
+  .cb_mem = &DriveTaskControlBlock,
+  .cb_size = sizeof(DriveTaskControlBlock),
+  .stack_mem = &DriveTaskBuffer[0],
+  .stack_size = sizeof(DriveTaskBuffer),
   .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for BluetoothRxTask */
+osThreadId_t BluetoothRxTaskHandle;
+uint32_t BluetoothRxTaskBuffer[ 128 ];
+osStaticThreadDef_t BluetoothRxTaskControlBlock;
+const osThreadAttr_t BluetoothRxTask_attributes = {
+  .name = "BluetoothRxTask",
+  .cb_mem = &BluetoothRxTaskControlBlock,
+  .cb_size = sizeof(BluetoothRxTaskControlBlock),
+  .stack_mem = &BluetoothRxTaskBuffer[0],
+  .stack_size = sizeof(BluetoothRxTaskBuffer),
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for RobotArmTask */
+osThreadId_t RobotArmTaskHandle;
+uint32_t RobotArmTaskBuffer[ 128 ];
+osStaticThreadDef_t RobotArmTaskControlBlock;
+const osThreadAttr_t RobotArmTask_attributes = {
+  .name = "RobotArmTask",
+  .cb_mem = &RobotArmTaskControlBlock,
+  .cb_size = sizeof(RobotArmTaskControlBlock),
+  .stack_mem = &RobotArmTaskBuffer[0],
+  .stack_size = sizeof(RobotArmTaskBuffer),
+  .priority = (osPriority_t) osPriorityLow,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -60,7 +90,9 @@ const osThreadAttr_t defaultTask_attributes = {
 
 /* USER CODE END FunctionPrototypes */
 
-void StartDefaultTask(void *argument);
+void DriveTaskHandler(void *argument);
+extern void BluetoothRxTaskHandler(void *argument);
+extern void RobotArmTaskHandler(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -91,8 +123,14 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  /* creation of DriveTask */
+  DriveTaskHandle = osThreadNew(DriveTaskHandler, NULL, &DriveTask_attributes);
+
+  /* creation of BluetoothRxTask */
+  BluetoothRxTaskHandle = osThreadNew(BluetoothRxTaskHandler, NULL, &BluetoothRxTask_attributes);
+
+  /* creation of RobotArmTask */
+  RobotArmTaskHandle = osThreadNew(RobotArmTaskHandler, NULL, &RobotArmTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -104,22 +142,22 @@ void MX_FREERTOS_Init(void) {
 
 }
 
-/* USER CODE BEGIN Header_StartDefaultTask */
+/* USER CODE BEGIN Header_DriveTaskHandler */
 /**
-  * @brief  Function implementing the defaultTask thread.
+  * @brief  Function implementing the DriveTask thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+/* USER CODE END Header_DriveTaskHandler */
+__weak void DriveTaskHandler(void *argument)
 {
-  /* USER CODE BEGIN StartDefaultTask */
+  /* USER CODE BEGIN DriveTaskHandler */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartDefaultTask */
+  /* USER CODE END DriveTaskHandler */
 }
 
 /* Private application code --------------------------------------------------*/
