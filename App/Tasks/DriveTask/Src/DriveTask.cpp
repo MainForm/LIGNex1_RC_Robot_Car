@@ -5,7 +5,8 @@
 extern "C"
 void DriveTaskHandler(void *argument){
     int a=0;
-    
+    int b=2;
+
     for(;;){
         osDelay(1);
     }
