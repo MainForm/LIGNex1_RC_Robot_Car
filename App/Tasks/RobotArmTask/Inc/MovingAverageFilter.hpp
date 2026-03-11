@@ -3,7 +3,7 @@
 
 #include "IFilter.hpp"
 
-class MovingAverageFilter : IFilter
+class MovingAverageFilter : public IFilter
 {
 private:
 	int window_size;

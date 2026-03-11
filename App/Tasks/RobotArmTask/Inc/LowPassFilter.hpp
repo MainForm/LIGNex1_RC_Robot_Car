@@ -3,7 +3,7 @@
 
 #include "IFilter.hpp"
 
-class LowPassFilter : IFilter
+class LowPassFilter : public IFilter
 {
 private:
 	float alpha;
