@@ -5,6 +5,7 @@ class ITrajectory
 {
 public:
 	virtual ~ITrajectory() = default;
+	virtual void Update(float target_angle, uint32_t current_tick) = 0;
 	virtual float GetCurrentAngle() = 0;
 };
 
