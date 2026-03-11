@@ -1,6 +1,8 @@
 #ifndef I_TRAJECTORY_HPP
 #define I_TRAJECTORY_HPP
 
+#include <cstdint>
+
 class ITrajectory
 {
 public:
