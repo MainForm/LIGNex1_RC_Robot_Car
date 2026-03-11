@@ -1,20 +1,16 @@
 #include "TrapezoidalProfile.hpp"
-#include "stm32f1xx_hal.h"
 #include <cmath>
 
-TrapezoidalProfile::TrapezoidalProfile(float cur_angle, float max_vel, float acc, float dec) : current_angle(cur_angle), current_velocity(0.0f), max_velocity(max_vel), accel(acc), decel(dec)
-{
-	last_tick = HAL_GetTick();
-}
+TrapezoidalProfile::TrapezoidalProfile(float cur_angle, float max_vel, float acc, float dec, uint32_t current_tick) 
+	: current_angle(cur_angle), current_velocity(0.0f), max_velocity(max_vel), accel(acc), decel(dec), last_tick(current_tick) {}
 
-void TrapezoidalProfile::Update(float target_angle)
+void TrapezoidalProfile::Update(float target_angle, uint32_t current_tick)
 {
-	uint32_t now = HAL_GetTick();
-	float dt = (now - last_tick) / 1000.0f;
+	float dt = (current_tick - last_tick) / 1000.0f;
+
+	last_tick = current_tick;
 
 	if (dt < 0.001f || dt > 0.1f) return;
-
-	last_tick = now;
 
 	float distance = target_angle - current_angle;
 	int direction = distance > 0 ? 1 : -1;

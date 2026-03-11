@@ -15,9 +15,9 @@ private:
 	uint32_t last_tick;
 
 public:
-	TrapezoidalProfile(float cur_angle, float max_vel, float acc, float dec);
+	TrapezoidalProfile(float cur_angle, float max_vel, float acc, float dec, uint32_t current_tick);
 
-	void Update(float target_angle) override;
+	void Update(float target_angle, uint32_t current_tick) override;
 	float GetCurrentAngle() override;
 };
 
