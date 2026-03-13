@@ -1,4 +1,7 @@
 #include "BlueToothRxTask.hpp"
+#include "IRx.hpp"
+#include "BleRx.hpp"
+
 
 #include "cmsis_os2.h"
 #include "gpio.h"
@@ -9,8 +12,8 @@ extern "C"
 void BluetoothRxTaskHandler(void *argument){
 
     for(;;){
-        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+        
 
-        osDelay(1000 );
+        
     }
 }
