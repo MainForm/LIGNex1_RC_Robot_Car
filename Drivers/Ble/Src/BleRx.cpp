@@ -79,7 +79,7 @@ void BleRx::GetFromRx(void *argument){
                 .servo_bot  = data->servo_bot,
                 .gripper    = data->gripper
             };
-            osMessageQueuePut(moter_q, &servo, 0, 10);
+            osMessageQueuePut(servo_q, &servo, 0, 10);
         }
         else if(data->mode_data == driving || data->mode_data == rotate){
             Moter_type moter = {
@@ -87,7 +87,7 @@ void BleRx::GetFromRx(void *argument){
                 .moter_x    = data->moter_x,
                 .moter_y    = data->moter_y
             };
-            osMessageQueuePut(servo_q, &moter, 0, 10);
+            osMessageQueuePut(moter_q, &moter, 0, 10);
         }
         #else
         if (data->mode_data == ack_driving){

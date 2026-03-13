@@ -14,7 +14,5 @@ void BluetoothRxTaskHandler(void *argument){
     Rx->Init(nullptr);
     for(;;){
         Rx->GetFromRx(nullptr);
-        
-        
     }
 }
