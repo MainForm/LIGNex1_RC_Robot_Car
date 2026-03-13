@@ -10,10 +10,11 @@
 
 extern "C"
 void BluetoothRxTaskHandler(void *argument){
-
+    IRx *Rx = new BleRx();
+    Rx->Init(nullptr);
     for(;;){
+        Rx->GetFromRx(nullptr);
         
-
         
     }
 }

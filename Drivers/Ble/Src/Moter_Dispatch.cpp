@@ -1,3 +1,4 @@
+#include "DataConfig.hpp"
 #if RC_Car
 #include "Moter_Dispatch.hpp"
 #include "DataConfig.hpp"
