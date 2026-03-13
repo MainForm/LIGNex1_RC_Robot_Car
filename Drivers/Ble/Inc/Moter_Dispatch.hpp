@@ -15,6 +15,7 @@ class Moter_dispatch : public Dispatcher{
     public:
         void Init(void *) override;
         void GetData(void *) override;
+        ~Moter_dispatch();
 };
 
 

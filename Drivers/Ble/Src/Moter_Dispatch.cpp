@@ -25,4 +25,10 @@ void Moter_dispatch::GetData(void *argument){
     }
 }
 
+Moter_dispatch::~Moter_dispatch(){
+
+}
+
+
+
 #endif

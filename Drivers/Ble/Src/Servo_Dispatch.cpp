@@ -26,5 +26,8 @@ void Servo_dispatch::GetData(void *argument){
     }
 }
 
+Servo_dispatch::~Servo_dispatch(){
+
+}
 
 #endif
