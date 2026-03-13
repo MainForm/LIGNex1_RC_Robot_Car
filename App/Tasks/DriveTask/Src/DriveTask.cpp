@@ -1,13 +1,12 @@
+#include "cmsis_os2.h"
 #include "DriveTask.hpp"
 
-#include "cmsis_os2.h"
 
 extern "C"
 void DriveTaskHandler(void *argument){
-    int a=0;
-    int b=2;
 
     for(;;){
-        osDelay(1);
+        
+        osDelay(1); // 1ms 주기로 정밀 제어
     }
 }
