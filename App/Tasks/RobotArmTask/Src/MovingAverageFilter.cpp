@@ -1,24 +1,24 @@
 #include "MovingAverageFilter.hpp"
 
-MovingAverageFilter::MovingAverageFilter(int size) 
-	: window_size(size), index(0), sum(0.0f)
+MovingAverageFilter::MovingAverageFilter(int window_size) 
+	: window_size_(window_size), index_(0), sum_(0.0f)
 {
-	buffer = new float[window_size];
-	for (int i = 0; i < window_size; ++i) buffer[i] = 0.0f;
+	buffer_ = new float[window_size_];
+	for (int i = 0; i < window_size_; ++i) buffer_[i] = 0.0f;
 }
 
 MovingAverageFilter::~MovingAverageFilter()
 {
-	delete[] buffer;
+	delete[] buffer_;
 }
 
 float MovingAverageFilter::Process(float raw_value)
 {
-	sum -= buffer[index];
-	buffer[index] = raw_value;
-	sum += buffer[index];
+	sum -= buffer_[index_];
+	buffer_[index_] = raw_value;
+	sum += buffer_[index_];
 
-	index = (index + 1) % window_size;
+	index_ = (index_ + 1) % window_size_;
 
-	return sum / window_size;
+	return sum_ / window_size_;
 }

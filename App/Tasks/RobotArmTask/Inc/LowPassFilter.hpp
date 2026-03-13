@@ -6,8 +6,8 @@
 class LowPassFilter : public IFilter
 {
 private:
-	float alpha;
-	float prev_value;
+	float alpha_;
+	float prev_value_;
 
 public:
 	LowPassFilter(float alpha, float initial_value);

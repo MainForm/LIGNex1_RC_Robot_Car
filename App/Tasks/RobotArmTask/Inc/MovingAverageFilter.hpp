@@ -6,13 +6,13 @@
 class MovingAverageFilter : public IFilter
 {
 private:
-	int window_size;
-	float* buffer;
-	int index;
-	float sum;
+	int window_size_;
+	float* buffer_;
+	int index_;
+	float sum_;
 
 public:
-	MovingAverageFilter(int size);
+	MovingAverageFilter(int window_size);
 	~MovingAverageFilter();
 	float Process(float raw_value) override;
 };
