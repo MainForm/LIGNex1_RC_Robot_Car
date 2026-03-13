@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "DataConfig.hpp"
 
 /* USER CODE END Includes */
 
@@ -84,6 +85,21 @@ const osThreadAttr_t RobotArmTask_attributes = {
   .stack_size = sizeof(RobotArmTaskBuffer),
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for RxQhandle */
+osMessageQueueId_t RxQhandleHandle;
+const osMessageQueueAttr_t RxQhandle_attributes = {
+  .name = "RxQhandle"
+};
+/* Definitions for ServoQ */
+osMessageQueueId_t ServoQHandle;
+const osMessageQueueAttr_t ServoQ_attributes = {
+  .name = "ServoQ"
+};
+/* Definitions for MoterQ */
+osMessageQueueId_t MoterQHandle;
+const osMessageQueueAttr_t MoterQ_attributes = {
+  .name = "MoterQ"
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -117,6 +133,16 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* creation of RxQhandle */
+  RxQhandleHandle = osMessageQueueNew (16, sizeof(uint8_t), &RxQhandle_attributes);
+
+  /* creation of ServoQ */
+  ServoQHandle = osMessageQueueNew (16, sizeof(Servo_type), &ServoQ_attributes);
+
+  /* creation of MoterQ */
+  MoterQHandle = osMessageQueueNew (16, sizeof(Moter_type), &MoterQ_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */

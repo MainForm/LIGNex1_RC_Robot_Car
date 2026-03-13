@@ -66,6 +66,14 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define LD2_Pin GPIO_PIN_5
 #define LD2_GPIO_Port GPIOA
+#define DIR_LEFT_Pin GPIO_PIN_6
+#define DIR_LEFT_GPIO_Port GPIOA
+#define PWM_LEFT_Pin GPIO_PIN_7
+#define PWM_LEFT_GPIO_Port GPIOA
+#define PWM_RIGHT_Pin GPIO_PIN_10
+#define PWM_RIGHT_GPIO_Port GPIOB
+#define DIR_RIGHT_Pin GPIO_PIN_8
+#define DIR_RIGHT_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
