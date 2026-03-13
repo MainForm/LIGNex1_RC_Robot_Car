@@ -3,8 +3,9 @@
 
 class IDataProcessor{
     public:
-        virtual void *Encoding(void *);
-        virtual void *Decoding(void *);
+        virtual void *Encoding(void *) = 0;
+        virtual void *Decoding(void *) = 0;
+        virtual ~IDataProcessor() = default;
 };
 
 

@@ -3,8 +3,9 @@
 
 class Dispatcher{
     public:
-        virtual void Init(void *);
-        virtual void *GetData(void *);
+        virtual void Init(void *) = 0;
+        virtual void GetData(void *) = 0;
+        virtual ~Dispatcher() = default;
 };
 
 #endif

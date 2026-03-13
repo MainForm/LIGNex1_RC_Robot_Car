@@ -14,7 +14,7 @@ class Servo_dispatch : public Dispatcher{
         Servo_type *buf;
     public:
         void Init(void *) override;
-        void *GetData(void *) override;
+        void GetData(void *) override;
 };
 
 

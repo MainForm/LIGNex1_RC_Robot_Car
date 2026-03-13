@@ -3,8 +3,9 @@
 
 class IRx{
     public:
-        virtual void Init(void *);
-        virtual void GetFromRx(void *);
+        virtual void Init(void *) = 0;
+        virtual void GetFromRx(void *) = 0;
+        virtual ~IRx() = default;
 };
 
 #endif
