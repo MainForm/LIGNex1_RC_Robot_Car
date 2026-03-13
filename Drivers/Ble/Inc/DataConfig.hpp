@@ -33,8 +33,8 @@ extern "C" {
 #define DEBUG_UART_NUM 2
 
 //BLE용 UART 설정
-#define RX_UART_NUM 1
-#define TX_UART_NUM 1
+#define RX_UART_NUM 3
+#define TX_UART_NUM 3
 
 
 
