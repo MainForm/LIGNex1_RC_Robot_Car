@@ -38,9 +38,9 @@ void TrapezoidalProfile::Update(float target_angle, uint32_t current_tick)
 		float target_velocity = max_velocity_ * direction;
 
 		if (direction == 1 && current_velocity_ < target_velocity)
-			current_velocity_ += accel * dt * direction;
+			current_velocity_ += accel_ * dt * direction;
 		if (direction == -1 && current_velocity_ > target_velocity)
-			current_velocity_ += accel * dt * direction;
+			current_velocity_ += accel_ * dt * direction;
 
 		if (current_velocity_ > max_velocity_) current_velocity_ = max_velocity_;
 		if (current_velocity_ < -max_velocity_) current_velocity_ = -max_velocity_;

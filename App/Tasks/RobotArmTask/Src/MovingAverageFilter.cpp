@@ -14,9 +14,9 @@ MovingAverageFilter::~MovingAverageFilter()
 
 float MovingAverageFilter::Process(float raw_value)
 {
-	sum -= buffer_[index_];
+	sum_ -= buffer_[index_];
 	buffer_[index_] = raw_value;
-	sum += buffer_[index_];
+	sum_ += buffer_[index_];
 
 	index_ = (index_ + 1) % window_size_;
 

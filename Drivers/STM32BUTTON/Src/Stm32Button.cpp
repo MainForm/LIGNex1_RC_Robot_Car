@@ -5,5 +5,5 @@ Stm32Button::Stm32Button(GPIO_TypeDef* port, uint16_t pin)
 
 bool Stm32Button::ReadState()
 {
-	return HAL_GPIO_ReadPin(port_, pin_) == GPIO_PIN_SET;_
+	return HAL_GPIO_ReadPin(port_, pin_) == GPIO_PIN_SET;
 }
